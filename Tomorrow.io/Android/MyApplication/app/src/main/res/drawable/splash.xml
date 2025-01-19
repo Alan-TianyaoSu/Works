@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <!-- 居中显示的 app_icon_front -->
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="173dp"
+        android:layout_height="163dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/app_icon_front"/>
+
+    <!-- 底部向上一点的 splash_powered_tio -->
+    <ImageView
+        android:id="@+id/powered_by"
+        android:layout_width="297dp"
+        android:layout_height="35dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/splash_powered_tio"/>
+
+</RelativeLayout>

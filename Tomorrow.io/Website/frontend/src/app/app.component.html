@@ -1,0 +1,244 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="Little Padding" style="padding: 5px;">
+<div class="container mt-5 p-4 main_index">
+  <h3 class="text-center mb-3 text_container">
+    Weather Search <span>🌤️</span>
+  </h3>
+
+  <form #weatherForm="ngForm" (ngSubmit)="onSubmit(weatherForm)" class="No_Bottom">
+    <div class="form-row">
+      <!-- Street input -->
+      <div class="form-group d-flex align-items-center flex-column flex-md-row main_row col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <label id="main_label" for="inputStreet">
+          Street <span class="text-danger">*</span>
+        </label>
+        <div class="flex-column ng_col">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="inputStreet" 
+            name="street" 
+            [(ngModel)]="street" 
+            #streetInput="ngModel" 
+            required 
+            (blur)="streetTouched = true"
+            [class.is-invalid]="streetInput.invalid && (streetInput.touched || streetTouched)"
+            [disabled]="currentLocation"> 
+
+          <div *ngIf="streetInput.invalid && (streetInput.touched || streetTouched)" class="invalid-feedback d-block">
+            Please enter a valid street.
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="form-group col-md-4 d-flex align-items-center main_row">
+        <label id="main_label" for="inputCity">
+          City <span class="text-danger">*</span>
+        </label>
+        <div class="flex-column ng_col">
+          <!-- <mat-form-field appearance="fill" class="w-100"> -->
+            <input 
+              type="text"
+              name="city"
+              class="form-control" 
+              id="inputCity" 
+              matInput 
+              placeholder="" 
+              [matAutocomplete]="autoCity" 
+              [(ngModel)]="city" 
+              #cityInput="ngModel" 
+              required 
+              (blur)="cityTouched = true"
+              [class.is-invalid]="cityInput.invalid && (cityInput.touched || cityTouched)"
+              [disabled]="currentLocation"
+              (input)="onCityInput($event)">
+            
+            <mat-autocomplete #autoCity="matAutocomplete">
+              <mat-option *ngFor="let option of filteredCityOptions" [value]="option.city">
+                {{ option.city }}
+              </mat-option>
+            </mat-autocomplete>
+      
+            <!-- <mat-error *ngIf="cityInput.invalid && (cityInput.touched || cityTouched)">
+              Please enter a valid city.
+            </mat-error> -->
+            <div *ngIf="cityInput.invalid && (cityInput.touched || cityTouched)" class="invalid-feedback d-block">
+              Please enter a valid city.
+            </div>
+          <!-- </mat-form-field> -->
+        </div>
+      </div>
+      
+      <div class="form-group col-md-4 d-flex align-items-center main_row">
+        <label id="main_label" for="inputState">
+          State <span class="text-danger">*</span>
+        </label>
+        <!-- <mat-form-field appearance="fill" class="w-100"> -->
+          <input 
+            type="text"
+            name="state"
+            id="inputState" 
+            class="form-control" 
+            matInput 
+            placeholder="Select your state" 
+            [matAutocomplete]="autoState" 
+            [(ngModel)]="state" 
+            #stateInput="ngModel" 
+            required 
+            (blur)="stateTouched = true"
+            [class.is-invalid]="stateInput.invalid && (stateInput.touched || stateTouched)"
+            [disabled]="currentLocation"
+            (input)="onStateInput($event)">
+          
+          <mat-autocomplete #autoState="matAutocomplete">
+            <mat-option *ngFor="let state of filteredStateOptions" [value]="state">
+              {{ state }}
+            </mat-option>
+          </mat-autocomplete>
+      
+          <!-- <mat-error *ngIf="stateInput.invalid && (stateInput.touched || stateTouched)">
+            Please select a state.
+          </mat-error> -->
+        <!-- </mat-form-field> -->
+      </div>
+
+
+    </div>
+
+    <hr>
+
+    <!-- Autodetect Location & Current Location -->
+    <div class="form-group check_box">
+      <div class="form-check d-flex">
+        <label class="form-check-label" for="currentLocation">
+          Autodetect Location <span class="text-danger">*</span>
+        </label>
+        <input 
+          class="form-check-input mx-2" 
+          type="checkbox" 
+          id="currentLocation" 
+          [(ngModel)]="currentLocation" 
+          name="currentLocation">
+        <label class="form-check-label" for="currentLocation">Current Location</label>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="container search_button">
+      
+      <div class="d-flex">
+        <!-- Search Button -->
+        <button class="btn btn-primary d-flex align-items-center me-2" 
+        [disabled]="weatherForm.invalid && !currentLocation" 
+        type="submit">
+        <i class="fas fa-search me-1"></i> Search
+        </button>
+
+        <!-- Clear Button -->
+        <button class="btn btn-outline-secondary d-flex align-items-center" 
+          type="button" 
+          (click)="clearForm(weatherForm)">
+          <i class="fas fa-bars me-1"></i> Clear
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="PADDINg_"></div>
+
+<div class="container d-flex Favor_Button">
+  <!-- Results Button -->
+  <button
+    class="btn me-2"
+    [ngClass]="{
+      'btn-primary': selectedButton === 'results',
+      'no-bg-blue-text': selectedButton !== 'results'
+    }"
+    (click)="selectButton('results')"
+  >
+    Results
+  </button>
+
+  <!-- Favorites Button -->
+  <button
+    class="btn"
+    [ngClass]="{
+      'btn-primary': selectedButton === 'favorites',
+      'no-bg-blue-text': selectedButton !== 'favorites'
+    }"
+    (click)="selectButton('favorites')"
+  >
+    Favorites
+  </button>
+</div>
+
+<div class="PADDINg_"></div>
+
+<div class="container My_Flex">
+  <div *ngIf="loading" class="progress my-3">
+    <div 
+      class="progress-bar progress-bar-striped progress-bar-animated" 
+      role="progressbar" 
+      [style.width.%]="progress"  
+      [attr.aria-valuenow]="progress" 
+      aria-valuemin="0"
+      aria-valuemax="100">
+      {{progress}}%
+    </div>
+  </div>
+
+
+
+  <div class="PADDINg_"></div>
+  <div *ngIf="errorMessage" class="alert alert-danger error-message" role="alert">
+    An error occured. Please try again later.
+  </div>
+</div>
+
+<div class="container My_resize">
+<div *ngIf="showTable && selectedButton === 'results'">
+  <app-weather-table [isFavorite]="isFavorite" [Page_id]="Page_id" (favoriteChanged)="onFavoriteChanged($event)" class="Table_Chart"></app-weather-table>
+</div>
+</div>
+
+<div class="container My_resize">
+<div *ngIf="selectedButton === 'favorites'" class="My_resize">
+  <div *ngIf="Data_Base.length === 0" class="alert alert-warning text-center" role="alert" style="display: flex; justify-content: left; width: 100%;">
+    Sorry. No records found.
+  </div>
+  <table *ngIf="Data_Base.length > 0" class="table table_favor">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">City</th>
+        <th scope="col">State</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of Data_Base; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td><a href="javascript:void(0)" (click)="handleClick(item)">{{ item.city }}</a></td>
+        <td><a href="javascript:void(0)" (click)="handleClick(item)">{{ item.state }}</a></td>
+        <td>
+          <button type="button" class="btn btn-link p-0" (click)="handleDelete(item)">
+            <i class="bi bi-trash-fill trash-icon" style="font-size: 1.2rem;"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div> 
+</div>
+<router-outlet />

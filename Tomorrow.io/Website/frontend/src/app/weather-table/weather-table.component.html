@@ -1,0 +1,131 @@
+<div class="outside_container" [@slideAnimation]="currentPage">
+  
+<div *ngIf="currentPage === 'results'" class="outside_container">
+  
+  <div class="h3 Result_Area">Forecast at {{ Show_Location }}</div>
+
+  <div class="logo-container d-flex align-items-center">
+    <!-- 收藏按钮 -->
+    <button class="btn btn-outline-secondary favorite-btn" (click)="toggleFavorite()">
+      <i [class]="isFavorite ? 'bi bi-star-fill' : 'bi bi-star'"></i>
+    </button>
+  
+    <!-- Details按钮 -->
+    <a href="#" class="details-btn mx-2" (click)="showDetails()">Details</a>
+  
+    <!-- 装饰箭头 -->
+    <i class="bi bi-chevron-right arrow-icon"></i>
+  </div>
+
+  <div class="table-container">
+      
+      <ul class="nav nav-tabs Day_Navy">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ 'active': currentView === 'dayView' }"
+          (click)="setView('dayView')"
+          href="javascript:void(0)"
+          >Day view</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ 'active': currentView === 'dailyTempChart' }"
+          (click)="setView('dailyTempChart')"
+          href="javascript:void(0)"
+          >Daily Temp. Chart</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [ngClass]="{ 'active': currentView === 'meteogram' }"
+          (click)="setView('meteogram')"
+          href="javascript:void(0)"
+          >Meteogram</a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <div class="table-container Table_Mobile">
+
+    <table *ngIf="currentView === 'dayView'" class="table custom-table col-xs-12 col-sm-6 col-md-4 col-lg-3">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Temp. High(°F)</th>
+          <th>Temp. Low(°F)</th>
+          <th>Wind Speed(mph)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let day of Summary_Weather; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td><a href="javascript:void(0)" (click)="Change_to_date(i)" style="text-decoration: underline">{{ day.Date }}</a></td>
+          <td>
+            <img [src]="day.Images" alt="Weather Icon" class="status-icon">
+            {{ day.Status }}
+          </td>
+          <td>{{ day.Temp_High }}</td>
+          <td>{{ day.Temp_Low }}</td>
+          <td>{{ day.Wind_Speed }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  <highcharts-chart
+  *ngIf="dailyChartLib && dailyChartOptions && currentView === 'dailyTempChart'"
+  [Highcharts]="dailyChartLib"
+  [options]="dailyChartOptions"
+  style="width: 100%; height: 100%; display: flex;"
+  id="Temp_Range"></highcharts-chart>
+
+  <highcharts-chart
+  *ngIf="meteogramChartLib && meteogramOptions && currentView === 'meteogram'"
+  [Highcharts]="meteogramChartLib"
+  [options]="meteogramOptions"
+  style="width: 100%; height: 100%; display: flex;"
+  id="meteogramChart"></highcharts-chart>
+
+
+  </div>
+</div>
+
+
+
+<div *ngIf="currentPage === 'details'" class="details_container">
+
+  <div class="d-flex justify-content-between align-items-center mb-3 top_container">
+
+    <button class="btn btn-outline-secondary d-flex align-items-center" (click)="showResults()">
+      <i class="bi bi-chevron-left arrow-icon"></i>
+      <span class="ms-2">List</span>
+    </button>
+
+
+    <h5 class="text-center flex-grow-1">{{ X_Date }}</h5>
+
+    <button class="btn btn-outline-secondary x_button" (click)="goToX()">
+      <i class="bi bi-twitter-x"></i>
+    </button>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let item of Daily_Weather[currentDate]; let i = index">
+        <th class="fw-bold dt_th">{{ item.label }}</th>
+        <td class="dt_td">{{ item.value }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="map" style="height: 800px; width: 100%; margin-bottom: 100px;"></div>
+
+</div>
+
+</div>

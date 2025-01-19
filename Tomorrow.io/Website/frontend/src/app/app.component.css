@@ -1,0 +1,174 @@
+.form-row{
+    display: flex;
+    justify-content: center;
+    /* border: solid 10px blue; */
+    flex-wrap: wrap;
+}
+
+.main_row {
+    width: 81%;
+}
+
+.ng_col{
+    width: 70%;
+}
+
+#main_label{
+    width: 30%;
+    position: relative;
+}
+
+#inputState{
+    width: 30%;
+}
+
+
+@media (max-width: 768px) {
+    .main_row {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    #main_label {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    .ng_col {
+        width: 100%;
+    }
+
+    #inputState{
+        width: 100%;
+    }
+
+    .My_resize{
+        /* display: flex; */
+        justify-content: center;
+        width: 100%;
+        padding: 0%;
+    }
+}
+
+.My_Flex{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0%;
+}
+
+/* .My_resize{
+    width: 81%;
+    background-color: white;
+} */
+
+.My_resize{
+    justify-content: center;
+    width: 100%;
+    padding: 0%;
+}
+
+.main_index{
+    background-color: #f0f0f0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    padding: 0;
+    display: flex; 
+    justify-content: center;
+    align-items: end;
+    flex-wrap: wrap;
+}
+
+.check_box{
+    /* border: solid 10px blue; */
+    display: flex;
+    justify-content: center;
+}
+
+.search_button{
+    
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 0;
+
+}
+
+.Favor_Button{
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5%;
+}
+
+.no-bg-blue-text {
+    background-color: transparent; 
+    border: none; 
+    color: #1b4ea5; 
+}
+
+.Table_Chart{
+    display: flex;
+    width: 100%;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+    border-radius: 8px; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+    padding: 10px 20px;
+    font-size: auto; 
+    width: 100%;
+}
+
+.error-message {
+    background-color: #f8d7da; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb; 
+    padding: 10px; 
+    border-radius: 5px; 
+    margin-top: 10px; 
+    font-size: 16px; 
+    width: 100%;
+    margin: 0%;
+}
+
+.PADDINg_{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+
+
+
+.progress{
+    width: 100%;
+}
+
+.No_Bottom{
+    padding-bottom: 0%;
+    /* border: solid 10px blue; */
+    margin: 0%;
+    height: 100%;
+    width: 100%;
+    margin-bottom: -22.2px;
+}
+
+.text_container{
+    width: 100%;
+    /* border: solid 10px blue; */
+}
+
+
+table.table_favor tbody tr td,
+table.table_favor tbody tr th{
+    background-color: white !important;
+}
+
+.trash-icon {
+    color: black; 
+}

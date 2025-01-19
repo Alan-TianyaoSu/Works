@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 深色主题 -->
+    <style name="Theme.MyApplication" parent="android:Theme.Material.NoActionBar">
+        <!-- 应用背景颜色 -->
+        <item name="android:colorBackground">#121212</item>
+        <!-- 前景颜色（文字颜色） -->
+        <item name="android:colorForeground">#111111</item>
+        <!-- 主色（如按钮、强调色） -->
+        <item name="android:colorPrimary">#111111</item>
+        <!-- 状态栏颜色（顶部） -->
+        <item name="android:statusBarColor">#121212</item>
+        <!-- 导航栏颜色（底部） -->
+        <item name="android:navigationBarColor">#121212</item>
+    </style>
+
+
+
+</resources>

@@ -1,0 +1,267 @@
+@media (max-width: 768px) {
+  /* border: solid 1px blue; */
+  table.custom-table th, 
+  table.custom-table td {
+    padding: 4px 6px; 
+    font-size: 12px; 
+  }
+
+  table.custom-table th:nth-child(1),
+  table.custom-table td:nth-child(1) {
+    width: 5%;
+  }
+
+  table.custom-table th:nth-child(2),
+  table.custom-table td:nth-child(2) {
+    width: 20%;
+  }
+
+  table.custom-table th:nth-child(3),
+  table.custom-table td:nth-child(3) {
+    width: 20%;
+  }
+
+  table.custom-table th:nth-child(4),
+  table.custom-table td:nth-child(4),
+  table.custom-table th:nth-child(5),
+  table.custom-table td:nth-child(5) {
+    width: 10%;
+  }
+
+  table.custom-table th:nth-child(6),
+  table.custom-table td:nth-child(6) {
+    width: 10%;
+  }
+}
+
+
+.outside_container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.page-container{
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    position: relative;
+    padding-top: 18px;
+    width: 100%;
+    display: flex;
+}
+
+#Temp_Range{
+  padding-top: 18px;
+}
+
+#meteogramChart{
+  padding-top: 18px;
+}
+
+.Day_Navy{
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* border: solid 1px blue; */
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+#Temp_Range{
+    /* border: solid 10px blue; */
+    display: flex;
+    justify-content: center;
+}
+
+#meteogramChart{
+    display: flex;
+    justify-content: center;
+}
+
+.favorite-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .favorite-btn i {
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .favorite-btn .bi-star-fill {
+    color: gold;
+  }
+
+  .details-btn {
+    text-decoration: underline;
+    text-decoration-color: lightblue;
+    text-underline-offset: 2px;
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+  }
+
+  .details-btn:hover {
+    text-decoration-color: black;
+  }
+
+  .arrow-icon {
+    font-size: 1.5rem;
+    color: black;
+  }
+
+  .logo-container {
+    gap: 5px;
+  }
+
+
+.logo-container{
+    justify-content: end;
+    /* border: solid 10px black; */
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.outside_container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h5 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.dt_th {
+width: 35%;
+/* background-color: #f8f9fa; */
+}
+
+.dt_td {
+text-align: left;
+width: 65%;
+}
+
+.btn-outline-secondary {
+background-color: #f8f9fa;
+border-color: #dee2e6;
+}
+
+.btn-outline-secondary:hover {
+background-color: #e2e6ea;
+}
+
+.details_container{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.top_container{
+    width: 100%;
+}
+
+.x_button {
+    background-color: white;      
+    border: 1px solid #ccc;       
+    border-radius: 8px;           
+    padding: 8px;                 
+    display: inline-flex;          
+    justify-content: center;       
+    align-items: center;           
+    width: 40px;                  
+    height: 40px;                 
+    cursor: pointer;              
+}
+  
+.x_button i {
+font-size: 24px;              
+color: black;                 
+}
+
+
+table.custom-table {
+  width: 100%;
+  border-collapse: collapse; 
+  margin-top: 10px;
+}
+
+table.custom-table thead th {
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+  text-align: left;
+}
+
+table.custom-table tbody tr {
+  border-bottom: 1px solid #ddd; 
+}
+
+table.custom-table th,
+table.custom-table td {
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.custom-table td a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+table.custom-table td a:hover {
+  text-decoration: underline;
+}
+
+table.custom-table th:nth-child(1),
+table.custom-table td:nth-child(1) {
+  width: 5%; 
+}
+
+table.custom-table th:nth-child(2),
+table.custom-table td:nth-child(2) {
+  width: 30%; 
+}
+
+table.custom-table th:nth-child(3),
+table.custom-table td:nth-child(3) {
+  width: 20%; 
+}
+
+table.custom-table th:nth-child(4),
+table.custom-table td:nth-child(4),
+table.custom-table th:nth-child(5),
+table.custom-table td:nth-child(5) {
+  width: 15%; 
+}
+
+table.custom-table th:nth-child(6),
+table.custom-table td:nth-child(6) {
+  width: 15%; 
+}
+
+.status-icon {
+  width: 20px; 
+  height: 20px; 
+  margin-right: 8px; 
+  vertical-align: middle; 
+}
+
+.Result_Area{
+  font-weight: bolder;
+  margin-top: 20px;
+}
